@@ -115,7 +115,7 @@ plot_bar_chart(axes[1,1], ai_group[ai_group["month"]==6], doctor_group[doctor_gr
 # ============================================================
 # Using exact percentages from the paper so they display perfectly
 ai_percentages = [11.4, 12.8, 9.2, 42.2, 2.6, 4.0, 7.0, 10.8]
-doc_percentages = [27.1, 12.6, 6.9, 16.6, 16.2, 5.5, 8.4, 6.7]
+doc_percentages = [27.1, 6.7, 6.9, 16.6, 16.2, 5.5, 8.4, 12.6]
 
 def plot_exact_pie(ax, percentages, explode_target, title):
     explode = [0.1 if cat == explode_target else 0 for cat in query_categories]
