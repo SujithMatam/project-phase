@@ -31,7 +31,7 @@ print('Config directory:', matplotlib.get_configdir())
 ### Figure 2: Longitudinal Outcomes (Total Cohort)
 ![Longitudinal Outcomes](figure2_longitudinal_outcomes.png)
 
-### Figure 3 & 4: Subjective Evaluation and Question Distribution
+### Figure 3: Subjective Evaluation and Question Distribution
 ![Analysis Results](orthopedic_analysis_results.png)
 
 ### Figure 4: Subgroup Analysis - Sports Medicine
