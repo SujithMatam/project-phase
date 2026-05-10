@@ -43,7 +43,7 @@ category_labels = {
 }
 
 ai_probs = [0.114, 0.128, 0.092, 0.422, 0.026, 0.040, 0.070, 0.108]
-doc_probs = [0.271, 0.126, 0.069, 0.166, 0.162, 0.055, 0.084, 0.067]
+doc_probs = [0.271, 0.067, 0.069, 0.166, 0.162, 0.055, 0.084, 0.126]
 
 patients_ortho["query_type"] = ""
 ai_mask = patients_ortho["group"] == "AI"
@@ -111,11 +111,14 @@ plot_bar_chart(axes[1,0], ai_group[ai_group["month"]==3], doctor_group[doctor_gr
 plot_bar_chart(axes[1,1], ai_group[ai_group["month"]==6], doctor_group[doctor_group["month"]==6], metrics_fup, metrics_fup, "D  6-Month Follow-Up")
 
 # ============================================================
-# EXACT PAPER PIE CHARTS (E & F)
+# CALCULATE PIE CHART DATA FROM GENERATED DATASET
 # ============================================================
-# Using exact percentages from the paper so they display perfectly
-ai_percentages = [11.4, 12.8, 9.2, 42.2, 2.6, 4.0, 7.0, 10.8]
-doc_percentages = [27.1, 6.7, 6.9, 16.6, 16.2, 5.5, 8.4, 12.6]
+def calculate_percentages(df):
+    counts = df["query_type"].value_counts().reindex(category_labels.values(), fill_value=0)
+    return (counts / counts.sum() * 100).tolist()
+
+ai_percentages = calculate_percentages(ai_group)
+doc_percentages = calculate_percentages(doctor_group)
 
 def plot_exact_pie(ax, percentages, explode_target, title):
     explode = [0.1 if cat == explode_target else 0 for cat in query_categories]
